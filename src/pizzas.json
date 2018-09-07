@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Pepperoni",
+    "subtitle": "Most wanted pizza",
+    "img": "cheese-pepperoni.jpg",
+    "priceLabel": "8€",
+    "price": 8
+  },
+  {
+    "name": "Hipster",
+    "subtitle": "Classical pizza, before it was mainstream",
+    "img": "classical.jpg",
+    "priceLabel": "8€",
+    "price": 8
+  },
+  {
+    "name": "Five cheeses",
+    "subtitle": "Because four isn't enough",
+    "img": "cheeses.jpg",
+    "priceLabel": "8€50",
+    "price": 8.5
+  },
+  {
+    "name": "Calzone",
+    "subtitle": "Surprise inside!",
+    "img": "calzone.jpg",
+    "priceLabel": "10€",
+    "price": 10
+  },
+  {
+    "name": "Hawaian",
+    "subtitle": "We won't judge you",
+    "img": "hawaian.jpg",
+    "priceLabel": "9€",
+    "price": 9
+  },
+  {
+    "name": "Mozza/Basilic",
+    "subtitle": "Two for one",
+    "img": "mozza-basilic.jpg",
+    "priceLabel": "9€",
+    "price": 9
+  },
+  {
+    "name": "Roma",
+    "subtitle": "You can't resist this one",
+    "img": "classical-cheese.jpg",
+    "priceLabel": "8€50",
+    "price": 8.5
+  },
+  {
+    "name": "Brooklyn",
+    "subtitle": "Ingredients from a burger... in a pizza",
+    "img": "burger-sauce.jpg",
+    "priceLabel": "9€50",
+    "price": 9.5
+  },
+  {
+    "name": "Veggies",
+    "subtitle": "Fresh from the farm",
+    "img": "vegan.jpg",
+    "priceLabel": "10€",
+    "price": 10
+  },
+  {
+    "name": "Eggs",
+    "subtitle": "What ?",
+    "img": "eggs.jpg",
+    "priceLabel": "10€50",
+    "price": 10.5
+  },
+  {
+    "name": "Minis",
+    "subtitle": "More pizzas, same calories",
+    "img": "mini-pizzas.jpg",
+    "priceLabel": "6€ for 4",
+    "price": 6
+  },
+  {
+    "name": "Soda",
+    "subtitle": "Bottle of 50cL",
+    "img": "sodas.jpg",
+    "priceLabel": "3€",
+    "price": 3
+  },
+  {
+    "name": "Cookies",
+    "subtitle": "Chocolate chips with extra chocolate",
+    "img": "cookies.jpg",
+    "priceLabel": "2€ for 6",
+    "price": 2
+  }
+]

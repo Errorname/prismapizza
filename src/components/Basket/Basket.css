@@ -1,0 +1,21 @@
+.basket {
+  position: sticky;
+  top: 1.5em;
+}
+
+.basket table {
+  margin-bottom: 0 !important;
+}
+
+.basket .item-row .count {
+  display: flex;
+  align-items: center;
+}
+
+.basket .item-row .count span {
+  margin: 0.5rem;
+}
+
+.basket .item-row td {
+  vertical-align: middle;
+}
