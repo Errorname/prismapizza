@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { PizzaCard } from '../'
+import PizzaCard from '../PizzaCard'
 
 import pizzas from 'pizzas.json'
 

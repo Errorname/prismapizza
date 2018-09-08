@@ -55,7 +55,11 @@ const Basket = ({ items, addItem, removeItem }) => {
           </table>
         )}
         <div className="card-content has-text-centered">
-          <a className="button is-success" disabled={items.length === 0}>
+          <a
+            className="button is-success"
+            disabled={items.length === 0}
+            onClick={() => alert("There is no backend yet, let's write it!")}
+          >
             Order !
           </a>
         </div>

@@ -12,11 +12,11 @@
   color: white;
 }
 
-.navbar-github {
+.navbar-item {
   color: white !important;
 }
 
-.navbar-github:hover {
+.navbar-item:hover {
   background-color: var(--primary) !important;
   color: black !important;
 }

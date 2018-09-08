@@ -1,10 +1,10 @@
-import React, { Fragment, Component } from 'react'
+import React, { Component } from 'react'
+import cn from 'classnames'
 
-import { Navbar, PizzaList, Basket } from 'components'
+import PizzaList from './PizzaList'
+import Basket from './Basket'
 
-import './App.css'
-
-class App extends Component {
+class Demo extends Component {
   state = {
     items: []
   }
@@ -30,23 +30,21 @@ class App extends Component {
     }))
 
   render() {
+    const { className } = this.props
     const { items } = this.state
     return (
-      <Fragment>
-        <Navbar />
-        <div className="container">
-          <div className="section columns">
-            <PizzaList addItem={this.addItem} />
-            <Basket
-              items={items}
-              addItem={this.addItem}
-              removeItem={this.removeItem}
-            />
-          </div>
+      <div className={cn('container', className)}>
+        <div className="section columns">
+          <PizzaList addItem={this.addItem} />
+          <Basket
+            items={items}
+            addItem={this.addItem}
+            removeItem={this.removeItem}
+          />
         </div>
-      </Fragment>
+      </div>
     )
   }
 }
 
-export default App
+export default Demo

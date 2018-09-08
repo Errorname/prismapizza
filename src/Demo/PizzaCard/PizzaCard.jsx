@@ -6,7 +6,7 @@ const PizzaCard = ({ pizza, onAddToBasket }) => (
   <div className="card pizza">
     <div className="card-image">
       <figure className="image is-4by3">
-        <img src={'/images/pizzas/' + pizza.img} alt="Pizza" />
+        <img src={'images/pizzas/' + pizza.img} alt="Pizza" />
       </figure>
     </div>
     <div className="card-content">

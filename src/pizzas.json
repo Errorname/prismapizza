@@ -35,15 +35,15 @@
     "price": 9
   },
   {
-    "name": "Mozza/Basilic",
-    "subtitle": "Two for one",
+    "name": "Remus & Romulus",
+    "subtitle": "Only the best of ingredients",
     "img": "mozza-basilic.jpg",
     "priceLabel": "9€",
     "price": 9
   },
   {
     "name": "Roma",
-    "subtitle": "You can't resist this one",
+    "subtitle": "With cheesy crust",
     "img": "classical-cheese.jpg",
     "priceLabel": "8€50",
     "price": 8.5
@@ -64,7 +64,7 @@
   },
   {
     "name": "Eggs",
-    "subtitle": "What ?",
+    "subtitle": "What?",
     "img": "eggs.jpg",
     "priceLabel": "10€50",
     "price": 10.5
