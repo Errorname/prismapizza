@@ -7,10 +7,6 @@
   padding-bottom: 3em;
 }
 
-.prez.with-navbar .page {
-  padding-bottom: 3.25em;
-}
-
 .pages {
   display: flex;
   transition: 1s;

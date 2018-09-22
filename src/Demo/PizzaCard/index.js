@@ -1,1 +1,1 @@
-export { default } from './PizzaCard'
+export { default, formatToEur } from './PizzaCard'

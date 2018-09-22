@@ -1,0 +1,27 @@
+type User {
+  id: ID! @unique
+  name: String!
+}
+
+type Pizza {
+  id: ID! @unique
+  name: String!
+  description: String!
+  img: String!
+  price: Float!
+}
+
+type Catalogue {
+  pizzas: [Pizza!]!
+}
+
+type Order {
+  id: ID! @unique
+  items: [OrderItem!]!
+  total: Float!
+}
+
+type OrderItem {
+  pizza: Pizza!
+  count: Int!
+}

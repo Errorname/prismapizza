@@ -2,9 +2,7 @@ import React from 'react'
 
 import PizzaCard from '../PizzaCard'
 
-import pizzas from 'pizzas.json'
-
-const PizzaList = ({ addItem }) => (
+const PizzaList = ({ pizzas, addItem }) => (
   <section className="column is-three-quarters">
     <div className="columns is-multiline">
       {pizzas.map(pizza => (

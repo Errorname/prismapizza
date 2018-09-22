@@ -1,0 +1,31 @@
+type Query {
+  pizzas: [Pizza!]!
+}
+
+type Mutation {
+  createOrder(items: [OrderItemInput!]!, userId: ID!): Order
+}
+
+type Pizza {
+  id: ID!
+  name: String!
+  description: String!
+  img: String!
+  price: Float!
+}
+
+type Order {
+  id: ID!
+  items: [OrderItem!]!
+  total: Int!
+}
+
+type OrderItem {
+  pizza: Pizza!
+  count: Int!
+}
+
+input OrderItemInput {
+  pizzaId: ID!
+  count: Int!
+}

@@ -1,13 +1,12 @@
 import React from 'react'
 
+import { formatToEur } from '../PizzaCard'
+
 import './Basket.css'
 
-const formatToEur = x =>
-  x.toLocaleString('en-US', { style: 'currency', currency: 'EUR' })
-
-const Basket = ({ items, addItem, removeItem }) => {
+const Basket = ({ items, addItem, removeItem, sendOrder }) => {
   let total = items.reduce(
-    (acc, { item, count }) => acc + item.price * count,
+    (acc, { pizza, count }) => acc + pizza.price * count,
     0
   )
 
@@ -21,27 +20,27 @@ const Basket = ({ items, addItem, removeItem }) => {
         {items.length > 0 && (
           <table className="table is-fullwidth">
             <tbody>
-              {items.map(({ item, count }) => (
-                <tr key={item.name} className="item-row">
+              {items.map(({ pizza, count }) => (
+                <tr key={pizza.name} className="item-row">
                   <td>
                     <div className="count">
                       <a
                         className="button is-small"
-                        onClick={() => addItem(item)}
+                        onClick={() => addItem(pizza)}
                       >
                         +
                       </a>
                       <span>{count}</span>
                       <a
                         className="button is-small"
-                        onClick={() => removeItem(item)}
+                        onClick={() => removeItem(pizza)}
                       >
                         -
                       </a>
                     </div>
                   </td>
-                  <td>{item.name}</td>
-                  <td>{formatToEur(item.price)}</td>
+                  <td>{pizza.name}</td>
+                  <td>{formatToEur(pizza.price)}</td>
                 </tr>
               ))}
             </tbody>
@@ -58,7 +57,7 @@ const Basket = ({ items, addItem, removeItem }) => {
           <a
             className="button is-success"
             disabled={items.length === 0}
-            onClick={() => alert("There is no backend yet, let's write it!")}
+            onClick={() => items.length > 0 && sendOrder()}
           >
             Order !
           </a>
