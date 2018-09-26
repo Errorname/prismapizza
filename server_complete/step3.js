@@ -9,20 +9,16 @@ const resolvers = {
     createOrder: async (root, args, context) => {
       const user = await context.prisma.user({ id: args.userId })
 
-      const prices = args.items.map(async item => {
-        const pizza = await context.prisma.pizza({ id: item.pizzaId })
-        return pizza.price * item.count
+      const pizzas = await context.prisma.pizzas({
+        where: { id_in: args.pizzasIds }
       })
-      const total = (await Promise.all(prices)).reduce((acc, p) => acc + p, 0)
 
-      const items = args.items.map(item => ({
-        pizza: { connect: { id: item.pizzaId } },
-        count: item.count
-      }))
+      const total = pizzas.reduce((acc, pizza) => acc + pizza.price, 0)
 
       const order = await context.prisma.createOrder({
-        items: { create: items },
-        total
+        pizzas: { connect: args.pizzasIds.map(id => ({ id })) },
+        total,
+        user: { connect: { id: user.id } }
       })
 
       console.log(`Sending mail to ${user.name} with order n°${order.id}`)

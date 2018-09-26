@@ -4,26 +4,25 @@ import { formatToEur } from '../PizzaCard'
 
 import './Basket.css'
 
-const Basket = ({ items, addItem, removeItem, sendOrder }) => {
-  let total = items.reduce(
-    (acc, { pizza, count }) => acc + pizza.price * count,
-    0
-  )
+const Basket = ({ basket, removePizza, sendOrder }) => {
+  let total = basket.reduce((acc, pizza) => acc + pizza.price, 0)
 
   return (
     <div className="column is-one-quarter">
       <div className="card basket">
         <div className="card-content has-text-centered">
           <p className="title is-4">Basket</p>
-          {items.length === 0 && <p>No items yet !</p>}
+          {basket.length === 0 && <p>No items yet !</p>}
         </div>
-        {items.length > 0 && (
+        {basket.length > 0 && (
           <table className="table is-fullwidth">
             <tbody>
-              {items.map(({ pizza, count }) => (
+              {basket.map(pizza => (
                 <tr key={pizza.name} className="item-row">
+                  <td>{pizza.name}</td>
+                  <td>{formatToEur(pizza.price)}</td>
                   <td>
-                    <div className="count">
+                    {/* <div className="count">
                       <a
                         className="button is-small"
                         onClick={() => addItem(pizza)}
@@ -37,18 +36,22 @@ const Basket = ({ items, addItem, removeItem, sendOrder }) => {
                       >
                         -
                       </a>
-                    </div>
+                    </div> */}
+                    <a
+                      className="button is-small has-background-danger has-text-white"
+                      onClick={() => removePizza(pizza)}
+                    >
+                      x
+                    </a>
                   </td>
-                  <td>{pizza.name}</td>
-                  <td>{formatToEur(pizza.price)}</td>
                 </tr>
               ))}
             </tbody>
             <tfoot>
               <tr>
-                <th />
                 <th>Total:</th>
                 <th>{formatToEur(total)}</th>
+                <th />
               </tr>
             </tfoot>
           </table>
@@ -56,8 +59,8 @@ const Basket = ({ items, addItem, removeItem, sendOrder }) => {
         <div className="card-content has-text-centered">
           <a
             className="button is-success"
-            disabled={items.length === 0}
-            onClick={() => items.length > 0 && sendOrder()}
+            disabled={basket.length === 0}
+            onClick={() => basket.length > 0 && sendOrder()}
           >
             Order !
           </a>

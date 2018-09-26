@@ -17,11 +17,7 @@ type Catalogue {
 
 type Order {
   id: ID! @unique
-  items: [OrderItem!]!
+  pizzas: [Pizza!]!
   total: Float!
-}
-
-type OrderItem {
-  pizza: Pizza!
-  count: Int!
+  user: User!
 }

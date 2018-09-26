@@ -4,197 +4,82 @@
 
 - Verify prisma@1.17
 - Set VSCode in light mode
-- Checkout `talk-mode` branch
+- Set both playground to light modes
+- Clean tabs in playground
 - Open presentation
 - Open Prisma Doc
+- Go into "Do Not Disturb" mode
+- Delete comments from step1.js
+- Reset userId from DemoWithApollo.jsx
+- Use Demo.jsx
+- Delete project in postgres
+- Kill both docker instances
+- Checkout repo
 
 ## During
+
+**Introduction**
 
 - Start talk
 - Show frontend
 
-```bash
-mkdir server
-cd server
+**Init Prisma & DB**
 
-touch docker-compose.yml
-# Copy from documentation
-
-docker-compose up
-
-prisma init --endpoint http://localhost:4466
-
-prisma deploy
-```
-
+- Copy docker-compose.yml
+- Explain docker-compose.yml
+- `docker-compose up`
+- `prisma init --endpoint http://localhost:4466`
+- `prisma deploy`
 - Show playground
 - Add a user
+
+**Create the catalogue**
+
 - Complete Datamodel (Pizza, Catalogue, OrderItem, Order)
+- `prisma deploy`
+- Add pizzas to db (from json)
+- Explain CRUD
+- Remove Hawaian
+- Set Veggies to 8€
 
-```bash
-prisma deploy
-```
+**Write backend schema**
 
-- Add pizzas to db
+- Copy schema.graphql
+- Explain schema.graphql
 
-- Add the following to prisma.yml
+**Create backend**
 
-```yml
-generate:
-  - generator: javascript-client
-    output: ./prisma-client/
-```
+- Add generator to prisma.yml
+- `touch index.js`
+- Copy step1.js
+- List pizzas
+- Set Veggies to 7€
 
-```bash
-npm init -y
-npm i prisma-client-lib graphql graphql-yoga
-prisma generate
-touch index.js
-```
+**Add Yoga**
 
-- Write index.js to test prisma-client
+- Copy step2.js
+- Explain Yoga
+- Write `pizzas` resolver
+- Execute in playground
+- Show query in frontend
+- Execute in frontend
 
-```js
-const { prisma } = require('./prisma-client')
+**Complete Yoga**
 
-async function main() {
-  const pizzas = await prisma.pizzas()
-  console.log(pizzas)
-}
+- Manually create an order in playground
+- Write `createOrder` resolver (copy if not enough time)
+  - get user by id
+  - get pizzas where id_in
+  - reduce prices to total
+  - createOrder
+    - pizzas: { connect: args.ids.map(id => ({id})) }
+    - total
+    - user: {connect: {id: user.id}}
+- Execute in playground
+- Show mutation in frontend
+- Execute in frontend
 
-main()
-```
+**Finish talk**
 
-```bash
-touch schema.graphql
-```
-
-- Write backend schema for listing pizzas
-  - Query: pizzas
-  - Type: Pizza
-- Write backend
-
-```js
-const { prisma } = require('./prisma-client')
-const { GraphQLServer } = require('graphql-yoga')
-
-const resolvers = {}
-
-const server = new GraphQLServer({
-  typeDefs: './schema.graphql',
-  resolvers,
-  context: {
-    prisma
-  }
-})
-server.start(() => console.log('Server is running on http://localhost:4000'))
-```
-
-- Test backend in playground
-- Show Frontend Demo code
-- Use DemoWithApollo
-- Modify Demo to use props.pizza instead of pizzas.json
-- Update veggies to 8€
-- Delete Hawaian
-- Reload demo
-
-- Create Order
-- Complete schema with:
-
-  - Mutation: createOrder
-  - Type: Order, OrderItem
-  - Input: OrderInput, OrderItemInput
-
-- Complete backend
-- Test backend in playground
-- Modify Demo to sendOrder
-- Show order in frontend
-
-- End talk
-
-## After
-
-- Clean tabs in playground
-- Clean DB (with /management)
-- Stop docker-compose
-
-## Appendix:
-
-### docker-compose.yml
-
-```yml
-version: '3'
-services:
-  prisma:
-    image: prismagraphql/prisma:1.16
-    restart: always
-    ports:
-      - '4466:4466'
-    environment:
-      PRISMA_CONFIG: |
-        port: 4466
-        databases:
-          default:
-            connector: postgres
-            host: postgres
-            port: 5432
-            user: prisma
-            password: prisma
-            migrations: true
-  postgres:
-    image: postgres:10.5
-    restart: always
-    environment:
-      POSTGRES_USER: prisma
-      POSTGRES_PASSWORD: prisma
-    volumes:
-      - postgres:/var/lib/postgresql/data
-volumes: postgres:
-```
-
-## server/index.js
-
-```js
-const { prisma } = require('./prisma-client')
-const { GraphQLServer } = require('graphql-yoga')
-
-const resolvers = {
-  Query: {
-    pizzas: (root, args, context) => context.prisma.pizzas()
-  },
-  Mutation: {
-    createOrder: async (root, args, context) => {
-      const user = await context.prisma.user({ id: args.userId })
-
-      const prices = args.items.map(async item => {
-        const pizza = await context.prisma.pizza({ id: item.pizzaId })
-        return pizza.price * item.count
-      })
-      const total = (await Promise.all(prices)).reduce((acc, p) => acc + p, 0)
-
-      const items = args.items.map(item => ({
-        pizza: { connect: { id: item.pizzaId } },
-        count: item.count
-      }))
-
-      const order = await context.prisma.createOrder({
-        items: { create: items },
-        total
-      })
-
-      console.log(`Sending mail to ${user.name} with order n°${order.id}`)
-
-      return order
-    }
-  }
-}
-
-const server = new GraphQLServer({
-  typeDefs: './schema.graphql',
-  resolvers,
-  context: {
-    prisma
-  }
-})
-server.start(() => console.log('Server is running on http://localhost:4000'))
-```
+- But there is more!
+- Questions?
