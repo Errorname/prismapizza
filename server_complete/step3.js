@@ -7,8 +7,6 @@ const resolvers = {
   },
   Mutation: {
     createOrder: async (root, args, context) => {
-      const user = await context.prisma.user({ id: args.userId })
-
       const pizzas = await context.prisma.pizzas({
         where: { id_in: args.pizzasIds }
       })
@@ -17,11 +15,10 @@ const resolvers = {
 
       const order = await context.prisma.createOrder({
         pizzas: { connect: args.pizzasIds.map(id => ({ id })) },
-        total,
-        user: { connect: { id: user.id } }
+        total
       })
 
-      console.log(`Sending mail to ${user.name} with order n°${order.id}`)
+      console.log(`Sending mail with order n°${order.id}`)
 
       return order
     }

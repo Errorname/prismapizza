@@ -10,8 +10,6 @@ const client = new ApolloClient({
   uri: 'http://localhost:4000'
 })
 
-const userId = 'USER_ID_HERE'
-
 const GET_PIZZAS = gql`
   query {
     pizzas {
@@ -25,8 +23,8 @@ const GET_PIZZAS = gql`
 `
 
 const CREATE_ORDER = gql`
-  mutation($pizzasIds: [ID!]!, $userId: ID!) {
-    createOrder(pizzasIds: $pizzasIds, userId: $userId) {
+  mutation($pizzasIds: [ID!]!) {
+    createOrder(pizzasIds: $pizzasIds) {
       id
     }
   }
@@ -46,7 +44,6 @@ const DemoWithApollo = props => (
                 <Demo
                   pizzas={data.pizzas}
                   createOrder={createOrder}
-                  userId={userId}
                   withApollo={true}
                   {...props}
                 />

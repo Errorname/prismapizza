@@ -33,7 +33,7 @@ class Demo extends Component {
     const pizzasIds = this.state.basket.map(pizza => pizza.id)
 
     await this.props.createOrder({
-      variables: { pizzasIds, userId: this.props.userId }
+      variables: { pizzasIds }
     })
 
     this.setState({ items: [] })

@@ -19,5 +19,4 @@ type Order {
   id: ID! @unique
   pizzas: [Pizza!]!
   total: Float!
-  user: User!
 }
