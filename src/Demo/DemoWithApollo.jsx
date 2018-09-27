@@ -10,7 +10,7 @@ const client = new ApolloClient({
   uri: 'http://localhost:4000'
 })
 
-const userId = 'cjmdwrj4200560b12i2x71tpj'
+const userId = 'USER_ID_HERE'
 
 const GET_PIZZAS = gql`
   query {

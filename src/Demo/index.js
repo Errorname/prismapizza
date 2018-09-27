@@ -1,1 +1,1 @@
-export { default } from './DemoWithApollo'
+export { default } from './Demo'
