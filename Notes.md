@@ -9,9 +9,6 @@
 - Open presentation
 - Open Prisma Doc
 - Go into "Do Not Disturb" mode
-- Delete comments from step1.js
-- Reset userId from DemoWithApollo.jsx
-- Use Demo.jsx
 - Delete project in postgres
 - Kill both docker instances
 - Checkout repo
@@ -21,6 +18,11 @@
 **Introduction**
 
 - Start talk
+
+  > GraphQL: Language for the communication between the client and the server. There was SOAP, then REST. Now it's GraphQL.
+
+  > Prisma: Application that handles the communication with the BDD. Kind of an ORM. But with Prisma, you talk in GraphQL
+
 - Show frontend
 
 **Init Prisma & DB**
@@ -29,9 +31,6 @@
 - Explain docker-compose.yml
 - `docker-compose up`
 - `prisma init --endpoint http://localhost:4466`
-- `prisma deploy`
-- Show playground
-- Add a user
 
 **Create the catalogue**
 
@@ -40,16 +39,17 @@
 - Add pizzas to db (from json)
 - Explain CRUD
 - Remove Hawaian
-- Set Veggies to 8€
 
 **Write backend schema**
 
 - Copy schema.graphql
 - Explain schema.graphql
+  > Subset of the large schema
 
 **Create backend**
 
 - Add generator to prisma.yml
+- `prisma generate`
 - `touch index.js`
 - Copy step1.js
 - List pizzas
