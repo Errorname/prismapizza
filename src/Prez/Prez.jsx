@@ -3,7 +3,7 @@ import cn from 'classnames'
 
 import { Title, GraphQL, Prisma, LiveCode, More, TheEnd } from './pages'
 
-import './Prez.css'
+import './Prez.scss'
 
 const pages = [Title, GraphQL, Prisma, LiveCode, More, TheEnd]
 
@@ -60,11 +60,7 @@ class Prez extends Component {
         <section className="pages" style={{ left: (page - 1) * -100 + 'vw' }}>
           {pages.map((Page, i) => {
             const localStep =
-              i + 1 === page
-                ? step
-                : i + 1 < page && from === 'left'
-                  ? Page.steps
-                  : 1
+              i + 1 === page ? step : i + 1 < page && from === 'left' ? Page.steps : 1
             return <Page step={localStep} key={i} />
           })}
         </section>

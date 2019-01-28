@@ -2,7 +2,7 @@ import React from 'react'
 
 import { formatToEur } from '../PizzaCard'
 
-import './Basket.css'
+import './Basket.scss'
 
 const Basket = ({ basket, removePizza, sendOrder }) => {
   let total = basket.reduce((acc, pizza) => acc + pizza.price, 0)
@@ -18,31 +18,16 @@ const Basket = ({ basket, removePizza, sendOrder }) => {
           <table className="table is-fullwidth">
             <tbody>
               {basket.map(pizza => (
-                <tr key={pizza.name} className="item-row">
+                <tr key={pizza.name}>
                   <td>{pizza.name}</td>
                   <td>{formatToEur(pizza.price)}</td>
                   <td>
-                    {/* <div className="count">
-                      <a
-                        className="button is-small"
-                        onClick={() => addItem(pizza)}
-                      >
-                        +
-                      </a>
-                      <span>{count}</span>
-                      <a
-                        className="button is-small"
-                        onClick={() => removeItem(pizza)}
-                      >
-                        -
-                      </a>
-                    </div> */}
-                    <a
+                    <span
                       className="button is-small has-background-danger has-text-white"
                       onClick={() => removePizza(pizza)}
                     >
                       x
-                    </a>
+                    </span>
                   </td>
                 </tr>
               ))}
@@ -57,13 +42,13 @@ const Basket = ({ basket, removePizza, sendOrder }) => {
           </table>
         )}
         <div className="card-content has-text-centered">
-          <a
+          <span
             className="button is-success"
             disabled={basket.length === 0}
             onClick={() => basket.length > 0 && sendOrder()}
           >
             Order !
-          </a>
+          </span>
         </div>
       </div>
     </div>

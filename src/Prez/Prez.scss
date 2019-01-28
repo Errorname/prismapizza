@@ -27,3 +27,24 @@
   justify-content: center;
   height: 100%;
 }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 3.5rem;
+  color: white;
+  background: none;
+  font-size: 18px;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+
+    svg {
+      margin-right: 0.5rem;
+    }
+  }
+}

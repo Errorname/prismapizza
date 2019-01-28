@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "graphql": "^14.0.2",
-    "graphql-yoga": "^1.16.2",
-    "prisma-client-lib": "^0.2.58"
+    "graphql": "^14.1.1",
+    "graphql-yoga": "^1.17.1",
+    "prisma-client-lib": "^1.25.4"
   },
   "devDependencies": {},
   "scripts": {

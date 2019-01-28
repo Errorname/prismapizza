@@ -1,6 +1,6 @@
 import React from 'react'
 
-const fromTop = step => 32 - (step - 1) * 3 + 'vh'
+const fromTop = step => 32 - (step - 1) * 2.4 + 'vh'
 
 const positioning = (currentStep, step) => ({
   position: 'relative',
@@ -15,6 +15,7 @@ const items = [
   'Testing',
   'Database introspection',
   'Prisma roadmap',
+  'Multi-tenancy',
   'Case study: "FAQ" at Zenika',
   '...'
 ]
@@ -41,11 +42,7 @@ const More = ({ step }) => (
         But there is more!
       </p>
       {items.map((item, i) => (
-        <p
-          key={item}
-          className="subtitle is-4 has-text-white"
-          style={positioning(step, i + 2)}
-        >
+        <p key={item} className="subtitle is-4 has-text-white" style={positioning(step, i + 2)}>
           {item}
         </p>
       ))}

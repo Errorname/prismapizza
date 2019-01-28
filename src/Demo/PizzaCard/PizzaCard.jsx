@@ -1,9 +1,8 @@
 import React from 'react'
 
-import './PizzaCards.css'
+import './PizzaCards.scss'
 
-const formatToEur = x =>
-  x.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })
+const formatToEur = x => x.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })
 
 const PizzaCard = ({ pizza, onAddToBasket }) => (
   <div className="card pizza">
@@ -20,9 +19,9 @@ const PizzaCard = ({ pizza, onAddToBasket }) => (
       <span className="card-footer-item">
         <span className="price-label">{formatToEur(pizza.price)}</span>
       </span>
-      <a className="card-footer-item shopping-cart" onClick={onAddToBasket}>
+      <span className="card-footer-item shopping-cart" onClick={onAddToBasket}>
         <i className="fas fa-cart-plus fa-lg" />
-      </a>
+      </span>
     </div>
   </div>
 )

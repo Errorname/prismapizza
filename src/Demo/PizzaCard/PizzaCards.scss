@@ -1,0 +1,26 @@
+.pizza {
+  .subtitle {
+    min-height: 40px;
+  }
+
+  .card-footer {
+    .card-footer-item {
+      height: 45px;
+
+      .price-label {
+        font-size: 19px;
+        font-weight: bold;
+      }
+
+      &.shopping-cart {
+        color: var(--secondary);
+        cursor: pointer;
+
+        &:hover {
+          color: white;
+          background-color: var(--secondary-light);
+        }
+      }
+    }
+  }
+}

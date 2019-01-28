@@ -13,26 +13,26 @@ const TheEnd = () => (
             marginBottom: '3em'
           }}
         >
-          <p
-            className="title is-1 has-text-white"
-            style={{ marginBottom: '1em' }}
-          >
+          <p className="title is-1 has-text-white" style={{ marginBottom: '1em' }}>
             Thank you for listening
           </p>
           <p className="subtitle is-3 has-text-white">Questions?</p>
         </div>
-        <div
-          style={{
-            width: '30%'
-          }}
-        >
-          <img
-            src="images/prez/delivery2.png"
-            alt=""
-            style={{ width: '60%' }}
-          />
+        <div style={{ width: '30%' }}>
+          <img src="images/prez/delivery2.png" alt="" style={{ width: '60%' }} />
         </div>
       </div>
+    </div>
+    <div className="footer">
+      <span>
+        <i className="fab fa-twitter fa-2x" /> @Errorname_
+      </span>
+      <span>
+        <i className="fab fa-github fa-2x" /> Errorname
+      </span>
+      <span>
+        <i className="fas fa-globe fa-2x" /> https://errorna.me
+      </span>
     </div>
   </div>
 )

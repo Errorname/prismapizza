@@ -5,14 +5,13 @@ import Navbar from './Navbar'
 import Demo from './Demo'
 import Prez from './Prez'
 
-import './App.css'
+import './App.scss'
 
 class App extends Component {
   constructor(props) {
     super(props)
 
-    this.state = (localStorage.PrismaPizza &&
-      JSON.parse(localStorage.PrismaPizza)) || {
+    this.state = (localStorage.PrismaPizza && JSON.parse(localStorage.PrismaPizza)) || {
       mode: 'presentation',
       page: 1,
       step: 1,

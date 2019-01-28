@@ -1,7 +1,8 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import cn from 'classnames'
 
-import './Navbar.css'
+import './Navbar.scss'
 
 const Navbar = ({ currentMode, toggleMode, className }) => (
   <nav className={cn('navbar', className)}>
@@ -15,9 +16,7 @@ const Navbar = ({ currentMode, toggleMode, className }) => (
       <div className="navbar-menu">
         <div className="navbar-end">
           <a className="navbar-item" onClick={toggleMode}>
-            <span
-              className={cn({ 'is-hidden': currentMode === 'presentation' })}
-            >
+            <span className={cn({ 'is-hidden': currentMode === 'presentation' })}>
               <i className="fas fa-desktop" />
             </span>
             <span className={cn({ 'is-hidden': currentMode === 'demo' })}>
