@@ -3,7 +3,7 @@ import React from 'react'
 const GraphQL = ({ step }) => (
   <div className="page-container">
     <div className="container page centered">
-      <p className="title is-1 has-text-white">GraphQL</p>
+      <p className="title is-1 has-text-white">REST vs GraphQL</p>
       <div
         style={{
           display: 'flex',
@@ -47,9 +47,7 @@ const GraphQL = ({ step }) => (
               backgroundColor: 'var(--primary-dark)',
               //height: (step > 3 ? 0 : (100 / 3) * (4 - step)) + '%'
               height:
-                step === 1
-                  ? '100%'
-                  : (step >= 4 && step < 8 ? (100 / 3) * (7 - step) : 0) + '%'
+                step === 1 ? '100%' : (step >= 4 && step < 8 ? (100 / 3) * (7 - step) : 0) + '%'
             }}
           />
         </div>

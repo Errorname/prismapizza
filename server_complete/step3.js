@@ -3,17 +3,17 @@ const { GraphQLServer } = require('graphql-yoga')
 
 const resolvers = {
   Query: {
-    pizzas: (root, args, context) => context.prisma.pizzas()
+    pizzas: (root, args, ctx) => ctx.prisma.pizzas()
   },
   Mutation: {
-    createOrder: async (root, args, context) => {
-      const pizzas = await context.prisma.pizzas({
+    createOrder: async (root, args, ctx) => {
+      const pizzas = await ctx.prisma.pizzas({
         where: { id_in: args.pizzasIds }
       })
 
       const total = pizzas.reduce((acc, pizza) => acc + pizza.price, 0)
 
-      const order = await context.prisma.createOrder({
+      const order = await ctx.prisma.createOrder({
         pizzas: { connect: args.pizzasIds.map(id => ({ id })) },
         total
       })

@@ -41,13 +41,8 @@ const DemoWithApollo = props => (
           <Mutation mutation={CREATE_ORDER}>
             {(createOrder, { data: response }) => (
               <Fragment>
-                <Demo
-                  pizzas={data.pizzas}
-                  createOrder={createOrder}
-                  withApollo={true}
-                  {...props}
-                />
-                {response && <SuccessOrder {...response.createOrder} />}
+                <Demo pizzas={data.pizzas} createOrder={createOrder} withApollo={true} {...props} />
+                {response && response.createOrder && <SuccessOrder {...response.createOrder} />}
               </Fragment>
             )}
           </Mutation>
