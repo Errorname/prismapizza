@@ -1,5 +1,5 @@
 type Pizza {
-  id: ID! @unique
+  id: ID! @id
   name: String!
   description: String!
   img: String!
@@ -7,11 +7,12 @@ type Pizza {
 }
 
 type Catalogue {
+  id: ID! @id
   pizzas: [Pizza!]!
 }
 
 type Order {
-  id: ID! @unique
+  id: ID! @id
   pizzas: [Pizza!]!
   total: Float!
 }

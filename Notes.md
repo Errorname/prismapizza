@@ -2,7 +2,7 @@
 
 ## Before
 
-- Verify prisma@1.25
+- Verify prisma@1.34
 - Set VSCode in light mode
 - Set both playground to light modes
 - Clean tabs in playground
@@ -39,7 +39,7 @@
     - Where REST can be seen as a collection of documents (for example, in a social network app, each user would be a document, each post would be a document) and sometimes, there would be links between these documents could be as an array of ids or URLs.
     - In opposition, with GraphQL, we think about relations between entities. We look at how users entities are connected to other users. And how users are linked to posts entities.
     - What does it mean in practice?
-    - Let's do a simple feature: In our fictional social network, we would want to have a page, where we show the name of a user, its posts, and its three lastest followers.
+    - Let's do a simple feature: In our fictional social network, we would want to have a page, where we show the name of a user, its posts, and its three latest followers.
     - This is how we would do it in REST:
       - First, we have to make a query to the user endpoint, to retrieve all the user's data.
       - Then, we have to make a second query to the post endpoint, to retrieve all of its posts.
@@ -68,8 +68,9 @@
 
 - `prisma init`
 - Choose `new database`, `PostgreSQL` and `Javascript`
-  - I'm gonna ask it to genreate a JS file to have a simplified access to Prisma.
+  - I'm gonna ask it to generate a JS file to have a simplified access to Prisma.
 - Explain docker-compose.yml, datamodel.prisma and prisma.yml
+- In docker-compose.yml, explain security (and set `rawAccess: false`)
 - `docker-compose up`
 
 **Create the catalogue**
@@ -78,7 +79,7 @@
 - And Prisma is gonna use this to generate the CRUD operations.
 - Copy datamodel
 - `prisma deploy`
-- Show playground
+- Show Playground
 - Explain CRUD
 - Add pizzas to db (from json)
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useReducer } from 'react'
 import cn from 'classnames'
 
 import PizzaList from './PizzaList'
@@ -6,55 +6,44 @@ import Basket from './Basket'
 
 import pizzasJson from 'pizzas.json'
 
-class Demo extends Component {
-  state = {
-    basket: []
-  }
+const Demo = ({ className, pizzas, withApollo, createOrder }) => {
+  const [basket, rawDispatch] = useReducer((state, { type, pizza }) => {
+    switch (type) {
+      case 'add':
+        return state.find(p => p.name === pizza.name) ? state : [...state, pizza]
+      case 'remove':
+        return state.filter(p => p.name !== pizza.name)
+      case 'clear':
+      default:
+        return []
+    }
+  }, [])
 
-  addPizza = pizza =>
-    this.setState(state => ({
-      basket:
-        state.basket.filter(p => p.name === pizza.name).length === 0
-          ? [...state.basket, pizza]
-          : state.basket
-    }))
+  const dispatch = type => pizza => rawDispatch({ type, pizza })
 
-  removePizza = pizza =>
-    this.setState(state => ({
-      basket: state.basket.filter(p => p.name !== pizza.name)
-    }))
-
-  sendOrder = async () => {
-    if (!this.props.withApollo) {
+  const sendOrder = async () => {
+    if (!withApollo) {
       alert("There is no backend yet, let's write it!")
       return
     }
 
-    const pizzasIds = this.state.basket.map(pizza => pizza.id)
+    const pizzasIds = basket.map(pizza => pizza.id)
 
-    await this.props.createOrder({
+    await createOrder({
       variables: { pizzasIds }
     })
 
-    this.setState({ items: [] })
+    dispatch('clear')()
   }
 
-  render() {
-    const { className, pizzas } = this.props
-    const { basket } = this.state
-    return (
-      <div className={cn('container', className)}>
-        <div className="section columns">
-          <PizzaList addPizza={this.addPizza} pizzas={pizzas || pizzasJson} />
-          <Basket
-            basket={basket}
-            removePizza={this.removePizza}
-            sendOrder={this.sendOrder}
-          />
-        </div>
+  return (
+    <div className={cn('container', className)}>
+      <div className="section columns">
+        <PizzaList addPizza={dispatch('add')} pizzas={pizzas || pizzasJson} />
+        <Basket basket={basket} removePizza={dispatch('remove')} sendOrder={sendOrder} />
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default Demo
